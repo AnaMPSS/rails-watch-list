@@ -22,8 +22,15 @@ class ListsController < ApplicationController
     end
   end
 
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    # No need for app/views/restaurants/destroy.html.erb
+    redirect_to lists_path, status: :see_other
+  end
+
   private
-  
+
   def list_params
     params.require(:list).permit(:name)
   end

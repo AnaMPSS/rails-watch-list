@@ -1,0 +1,27 @@
+
+<h1 class="text-center">Lista do género</h1>
+
+<%= @list.name %>
+<div class="cover mb-4 d-flex align-items-center justify-content-center">
+  <div class="text-center text-blue">
+    <h1>Add your favorite movies</h1>
+    <h3 class="typed-js" data-controller="typed-js"></h3>
+  </div>
+</div>
+<div class="container py-5">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3>My Lists</h3>
+    <%= link_to "Add a bookmark", new_list_bookmark_path(@list.id), class: "btn btn-flat" %>
+  </div>
+  <div class="row">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="co-12 col-sm-6 col-md-4 mb-3">
+          <div class="card-category" data-aos="zoom-in">
+            <%= bookmark.movie.title %>
+            <%= bookmark.movie.overview %>
+            <%= bookmark.movie.poster_url %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
